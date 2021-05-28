@@ -1,7 +1,7 @@
 //目标接口（新接口）
 class ITarget{
 public:
-    virtual void process()=0;
+    virtual void process()=0; // 纯虚函数必须实现
 };
 
 //遗留接口（老接口）
@@ -17,9 +17,9 @@ class OldClass: public IAdaptee{
 };
 
 //对象适配器
-class Adapter: public ITarget{ //继承
+class Adapter: public ITarget{ //继承  新接口
 protected:
-    IAdaptee* pAdaptee;//组合
+    IAdaptee* pAdaptee;//组合 老接口
     
 public:
     
