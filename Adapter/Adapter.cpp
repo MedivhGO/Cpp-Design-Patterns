@@ -19,15 +19,15 @@ class OldClass: public IAdaptee{
 //对象适配器
 class Adapter: public ITarget{ //继承  新接口
 protected:
-    IAdaptee* pAdaptee;//组合 老接口
+    IAdaptee* pAdaptee;//组合 老接口, 在新接口的子类里声明老接口的对象指针
     
 public:
     
-    Adapter(IAdaptee* pAdaptee){
+    Adapter(IAdaptee* pAdaptee){ // 初始化老对象
         this->pAdaptee=pAdaptee;
     }
     
-    virtual void process(){
+    virtual void process(){  // 实现新接口里的纯虚函数
         int data=pAdaptee->bar();
         pAdaptee->foo(data);
         
@@ -40,7 +40,7 @@ public:
 //类适配器
 class Adapter: public ITarget,
                protected OldClass{ //多继承
-               
+               //继承ITarget类型, protected继承遗留类型
                
 }
 
